@@ -1,0 +1,73 @@
+# Ground side defaults (edit ports for your Pi).
+# Nav2 goal tolerance ~0.15 m: set in your Nav2 yaml (controller_server / goal_checker: xy_goal_tolerance).
+# Nav2 stack itself is NOT in this package — bring up nav2_bringup separately.
+
+uwb_serial_localizer:
+  ros__parameters:
+    serial_port: "/dev/ttyACM0"
+    baudrate: 115200
+    frame_id: "odom"
+    anchor_config_file: ""
+    anchors_json: '{"0":[0.0,2.45],"1":[0,0.0],"2":[2.4,0]}'
+    fixed_triplet: [0, 1, 2]
+    use_kalman: true
+    calib_a: 1.0
+    calib_b_mm: 0.0
+    publish_residual_topic: true
+
+lora_goal_receiver:
+  ros__parameters:
+    serial_port: "/dev/ttyUSB0"
+    baudrate: 115200
+    frame_id: "map"
+    endian: "little"
+    max_goal_publishes: 3
+
+uwb_filtered_odom:
+  ros__parameters:
+    input_topic: "uwb_pose_fused"
+    odom_frame_id: "odom"
+    base_frame_id: "base_link"
+    alpha: 0.35
+    max_step_m: 2.0
+    publish_tf: true
+
+nav2_goal_bridge:
+  ros__parameters:
+    goal_topic: "uav_goal"
+    action_name: "navigate_to_pose"
+    cancel_previous: true
+    min_goal_interval_sec: 0.5
+    max_nav_goals: 3
+
+chassis_serial_node:
+  ros__parameters:
+    serial_port: "/dev/ttyUSB1"
+    baudrate: 115200
+    cmd_vel_topic: "cmd_vel_gated"
+    min_send_interval_sec: 0.02
+
+cmd_vel_gate:
+  ros__parameters:
+    in_topic: "cmd_vel"
+    out_topic: "cmd_vel_gated"
+    enable_topic: "uav_goal"
+    enabled_on_start: false
+    publish_zero_when_disabled: true
+    zero_publish_rate_hz: 10.0
+    max_v_m_s: 0.5
+    max_w_rad_s: 1.0
+
+pose_heading_fuser:
+  ros__parameters:
+    pose_in_topic: "uwb_pose_raw"
+    heading_topic: "chassis/heading_rad"
+    pose_out_topic: "uwb_pose_fused"
+    yaw_offset_rad: 0.0
+
+heading_imu_publisher:
+  ros__parameters:
+    heading_topic: "chassis/heading_rad"
+    imu_topic: "imu/data"
+    frame_id: "base_link"
+    yaw_offset_rad: 0.0

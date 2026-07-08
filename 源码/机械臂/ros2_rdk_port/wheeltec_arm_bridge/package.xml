@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>wheeltec_arm_bridge</name>
+  <version>0.2.1</version>
+  <description>Serial bridge and MoveIt trajectory bridge for WHEELTEC A150</description>
+  <maintainer email="user@example.com">user</maintainer>
+  <license>BSD</license>
+  <buildtool_depend>ament_python</buildtool_depend>
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>control_msgs</exec_depend>
+  <exec_depend>trajectory_msgs</exec_depend>
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

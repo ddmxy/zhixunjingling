@@ -1,0 +1,10 @@
+# 请求：统一指令格式
+int32 command        # 动作指令编号
+string input1        # 备用字符串参数
+float32 input_num_1  # 数值参数1（起飞高度 / x坐标）
+float32 input_num_2  # 数值参数2（y坐标）
+float32 input_num_3  # 数值参数3（z坐标）
+---
+# 响应
+bool success         # 动作是否执行成功
+string feedback      # 执行结果信息

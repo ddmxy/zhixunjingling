@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="760" viewBox="0 0 1400 760">
+  <defs>
+    <style>
+      .hdr { font: 700 17px "Microsoft YaHei","SimHei",Arial,sans-serif; fill: #111827; }
+      .cell { font: 500 15px "Microsoft YaHei","SimHei",Arial,sans-serif; fill: #1f2937; }
+      .small { font: 500 13px "Microsoft YaHei","SimHei",Arial,sans-serif; fill: #374151; }
+      .flow { font: 500 12px Arial,sans-serif; fill: #6b7280; }
+      .tbl { fill: #ffffff; stroke: #9ca3af; stroke-width: 1.5; }
+      .rowA { fill: #f9fafb; }
+      .rowB { fill: #ffffff; }
+      .hdrRow { fill: #e5e7eb; }
+      .arrow { stroke: #2563eb; stroke-width: 2; fill: none; marker-end: url(#m); }
+    </style>
+    <marker id="m" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect width="1400" height="760" fill="#ffffff"/>
+  <text x="700" y="38" text-anchor="middle" class="hdr" font-size="20px">自主导航分层结构（感知—规划—控制—执行）</text>
+  <text x="700" y="62" text-anchor="middle" class="small">典型输入 / 典型输出与 ROS2 常见话题对应，便于与系统实现对照</text>
+  <g transform="translate(60,85)">
+    <rect class="tbl hdrRow" x="0" y="0" width="1280" height="44"/>
+    <line x1="140" y1="0" x2="140" y2="560" stroke="#9ca3af" stroke-width="1.5"/>
+    <line x1="340" y1="0" x2="340" y2="560" stroke="#9ca3af" stroke-width="1.5"/>
+    <line x1="820" y1="0" x2="820" y2="560" stroke="#9ca3af" stroke-width="1.5"/>
+    <text x="70" y="29" text-anchor="middle" class="hdr">层次</text>
+    <text x="240" y="29" text-anchor="middle" class="hdr">作用</text>
+    <text x="580" y="29" text-anchor="middle" class="hdr">典型输入</text>
+    <text x="1050" y="29" text-anchor="middle" class="hdr">典型输出</text>
+
+    <rect class="tbl rowA" x="0" y="44" width="1280" height="76"/>
+    <text x="70" y="88" text-anchor="middle" class="cell">感知</text>
+    <text x="155" y="78" class="cell">障碍物信息</text>
+    <text x="355" y="72" class="small">激光雷达 /scan、（可选）相机</text>
+    <text x="835" y="82" class="small">点云/扫描、特征</text>
+
+    <rect class="tbl rowB" x="0" y="120" width="1280" height="84"/>
+    <text x="70" y="168" text-anchor="middle" class="cell">定位与坐标系</text>
+    <text x="155" y="158" class="cell">机器人在地图中的位姿</text>
+    <text x="355" y="148" class="small">map↔odom↔base_link TF、/odom、（可选）imu/data</text>
+    <text x="835" y="168" class="small">位姿、速度估计</text>
+
+    <rect class="tbl rowA" x="0" y="204" width="1280" height="76"/>
+    <text x="70" y="248" text-anchor="middle" class="cell">地图</text>
+    <text x="155" y="238" class="cell">可通行空间表达</text>
+    <text x="355" y="242" class="small">SLAM 建图或先验地图</text>
+    <text x="835" y="242" class="small">/map、静态层</text>
+
+    <rect class="tbl rowB" x="0" y="280" width="1280" height="76"/>
+    <text x="70" y="324" text-anchor="middle" class="cell">全局规划</text>
+    <text x="155" y="314" class="cell">从起点到终点的可行路径</text>
+    <text x="355" y="318" class="small">全局代价地图、目标点</text>
+    <text x="835" y="318" class="small">全局路径（waypoints）</text>
+
+    <rect class="tbl rowA" x="0" y="356" width="1280" height="84"/>
+    <text x="70" y="404" text-anchor="middle" class="cell">局部规划/避障</text>
+    <text x="155" y="394" class="cell">跟踪全局路径并实时避障</text>
+    <text x="355" y="388" class="small">局部代价地图、局部目标、机器人速度约束</text>
+    <text x="835" y="404" class="small">/cmd_vel</text>
+
+    <rect class="tbl rowB" x="0" y="440" width="1280" height="84"/>
+    <text x="70" y="488" text-anchor="middle" class="cell">执行与安全</text>
+    <text x="155" y="478" class="cell">速度限幅、门控、下位机跟踪</text>
+    <text x="355" y="472" class="small">cmd_vel（本工程含 cmd_vel_gate）</text>
+    <text x="835" y="478" class="small">电机执行</text>
+
+    <!-- 外框：勿用 .tbl（含白底），否则 Word 等会把整块表格盖住 -->
+    <rect x="0" y="0" width="1280" height="560" fill="none" stroke="#9ca3af" stroke-width="1.5"/>
+  </g>
+  <path d="M 1330 130 L 1330 620" class="arrow"/>
+  <text x="1288" y="378" text-anchor="end" class="flow">自上而下数据流</text>
+  <text x="700" y="720" text-anchor="middle" class="small" fill="#6b7280">说明：本工程 Nav2 发布 /cmd_vel，经 cmd_vel_gate 得到 cmd_vel_gated，由 chassis_serial_node 下发 STM32。</text>
+</svg>

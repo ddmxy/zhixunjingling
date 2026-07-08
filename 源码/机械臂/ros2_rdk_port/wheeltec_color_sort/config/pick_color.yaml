@@ -1,0 +1,41 @@
+/**:
+  ros__parameters:
+    auxiliary_angle: 0.20
+    link_a: 0.105
+    link_b: 0.100
+    link_c: 0.170
+    link_h: 0.105
+
+    # Fine tune if gripper misses left/right (meters)
+    color_x_offset: 0.006
+    # Fine tune if gripper misses forward/back (meters)
+    # Block higher than mat -> increase (e.g. 0.01)
+    # Block lower / arm stops short -> decrease (e.g. -0.01)
+    color_y_offset: -0.005
+
+    vision_x_scale: -0.354
+    vision_x_base: 0.105
+    vision_y_scale: 0.307
+    vision_y_base: 0.17
+    max_angle_x: 0.65
+    max_angle_y: 0.55
+
+    # true = follow block rotation (official default)
+    # false = gripper stays straight (only if cube rotation is unstable)
+    use_block_rotation: true
+    hand_angle_offset: 0.0
+    edge_x_gain: 0.0
+    edge_y_gain: 0.0
+
+    target_color: "green"
+    put_pose: "green_put"
+    confirm_count: 4
+    max_sample_spread: 0.05
+    do_put: false
+    return_home_after_pick: true
+    use_moveit: false
+    move_duration: 3.0
+    grip_hold_duration: 2.0
+    pick_cooldown: 2.0
+    grab_y_adjust: 0.0
+    show_image: true

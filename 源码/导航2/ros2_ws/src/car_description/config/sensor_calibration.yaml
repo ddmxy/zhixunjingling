@@ -1,0 +1,12 @@
+# Sensor frame calibration (edit on RDK, then rebuild car_description / restart launch).
+#
+# laser_mount_yaw_rad: rotation of lidar Z axis relative to base_link +X (forward).
+# If navigation reaches the point but heading is ALWAYS off by the same side
+# (e.g. always ~15 deg left), adjust this value (radians):
+#   +0.26  ≈ +15 deg counter-clockwise
+#   -0.26  ≈ -15 deg clockwise
+#
+# Quick test: park parallel to a long wall, align RViz 2D Pose Estimate carefully,
+# send a goal along the wall — note signed error, set laser_mount_yaw_rad ≈ -error_rad.
+
+laser_mount_yaw_rad: 0.0

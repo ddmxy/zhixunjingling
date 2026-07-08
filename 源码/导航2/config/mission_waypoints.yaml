@@ -1,0 +1,79 @@
+# Arena v4 mission — recorded 2026-07-03
+# origin #08 | via #09 #10 #11 | final #13
+frame_id: map
+map: /home/sunrise/maps/arena_map_v4.yaml
+
+points:
+  home:
+    x: 0.184
+    y: 0.178
+    yaw: 0.0192
+    yaw_deg: 1.1
+    frame_id: map
+    note: "origin #08"
+
+  wp_09:
+    x: 0.597
+    y: -0.028
+    yaw: -0.2235
+    yaw_deg: -12.8
+    frame_id: map
+    note: "via #09"
+
+  wp_10:
+    x: 0.926
+    y: -0.267
+    yaw: -1.4223
+    yaw_deg: -81.5
+    frame_id: map
+    note: "via #10"
+
+  wp_11:
+    x: 0.790
+    y: -1.092
+    yaw: -2.8211
+    yaw_deg: -161.6
+    frame_id: map
+    note: "via #11"
+
+  box_approach:
+    x: 0.448
+    y: -0.802
+    yaw: -1.3484
+    yaw_deg: -77.3
+    frame_id: map
+    note: "final #13"
+
+route:
+  - wp_09
+  - wp_10
+  - wp_11
+  - box_approach
+
+mission:
+  coarse_handoff_xy_m: 0.18
+  coarse_handoff_yaw_deg: 15.0
+  # 过程点：xy 细调到 6cm
+  fine_xy_m: 0.06
+  fine_yaw_deg: 3.0
+  fine_timeout_s: 90.0
+  fine_max_vx: 0.12
+  fine_max_wz: 0.68
+  fine_min_vx: 0.05
+  fine_min_wz: 0.30
+  # 终点：位置 9cm 内，角度尽量 <1.5°
+  final_coarse_handoff_xy_m: 0.12
+  final_xy_ok_m: 0.09
+  final_xy_severe_m: 0.09
+  final_yaw_deg: 1.5
+  final_rescue_vx: 0.06
+  final_yaw_timeout_s: 90.0
+  final_rescue_timeout_s: 20.0
+  # 回家：只追位置，不管角度，30cm 内算到家
+  home_arrive_xy_m: 0.30
+  home_nav_timeout_s: 180.0
+  settle_time_s: 1.0
+  final_dwell_s: 20.0
+  return_home: true
+  final_point: box_approach
+  via_points: [wp_09, wp_10, wp_11]

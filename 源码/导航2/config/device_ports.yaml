@@ -1,0 +1,14 @@
+# RDK 上只改这一份：~/device_ports.yaml
+# （不是 PC 上的 config/device_ports.yaml，改那边要 scp 过来才生效）
+#
+# 改完后两个终端都 Ctrl+C 重启：
+#   bash ~/Desktop/run_navigation.sh
+#   bash ~/Desktop/run_full_mission.sh
+#
+# 查看是否生效：python3 ~/Desktop/load_ports.py --show
+
+device_ports:
+  chassis: /dev/ttyUSB0
+  lidar: /dev/ttyACM0
+  arm_mcu: /dev/ttyACM1
+  arm_camera: /dev/video0

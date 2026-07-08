@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <style>
+      .title { font: 700 28px Arial,sans-serif; fill: #111827; }
+      .coltitle { font: 700 22px Arial,sans-serif; fill: #111827; }
+      .boxtext { font: 600 18px Arial,sans-serif; fill: #111827; }
+      .small { font: 500 15px Arial,sans-serif; fill: #111827; }
+      .label { font: 500 14px Arial,sans-serif; fill: #374151; }
+      .muted { fill: #6b7280; }
+      .card { fill: #ffffff; stroke: #d1d5db; stroke-width: 2; rx: 16; ry: 16; }
+      .boxL { fill: #eef2ff; stroke: #c7d2fe; stroke-width: 2; rx: 14; ry: 14; }
+      .boxM { fill: #ecfeff; stroke: #a5f3fc; stroke-width: 2; rx: 14; ry: 14; }
+      .boxNav { fill: #f0fdf4; stroke: #86efac; stroke-width: 2; rx: 16; ry: 16; }
+      .boxR { fill: #fff7ed; stroke: #fed7aa; stroke-width: 2; rx: 14; ry: 14; }
+      .arrow { stroke: #111827; stroke-width: 2.5; fill: none; marker-end: url(#arrowHead); }
+      .arrow2 { stroke: #374151; stroke-width: 2.2; fill: none; marker-end: url(#arrowHead2); }
+      .dash { stroke-dasharray: 8 6; }
+    </style>
+
+    <marker id="arrowHead" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#111827"/>
+    </marker>
+    <marker id="arrowHead2" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#374151"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1600" height="900" fill="#ffffff"/>
+
+  <text x="800" y="55" text-anchor="middle" class="title">Car Upper Computer (ROS2) - 3-Column Dataflow</text>
+  <text x="800" y="85" text-anchor="middle" class="label">Key inputs - processing - outputs (no full topic list)</text>
+
+  <!-- column cards -->
+  <rect x="70" y="120" width="420" height="720" class="card"/>
+  <rect x="590" y="120" width="420" height="720" class="card"/>
+  <rect x="1110" y="120" width="420" height="720" class="card"/>
+
+  <text x="280" y="160" text-anchor="middle" class="coltitle">External Inputs</text>
+  <text x="800" y="160" text-anchor="middle" class="coltitle">Raspberry Pi ROS2 Nodes (car_ground_nav)</text>
+  <text x="1320" y="160" text-anchor="middle" class="coltitle">Outputs &amp; Actuation</text>
+
+  <!-- left column -->
+  <rect x="120" y="210" width="320" height="70" class="boxL"/>
+  <text x="280" y="254" text-anchor="middle" class="boxtext">LoRa module (serial)</text>
+
+  <rect x="120" y="320" width="320" height="70" class="boxL"/>
+  <text x="280" y="364" text-anchor="middle" class="boxtext">UWB module (serial)</text>
+
+  <rect x="120" y="430" width="320" height="70" class="boxL"/>
+  <text x="280" y="474" text-anchor="middle" class="boxtext">STM32 serial link</text>
+
+  <rect x="120" y="540" width="320" height="70" class="boxL"/>
+  <text x="280" y="584" text-anchor="middle" class="boxtext">LiDAR</text>
+
+  <!-- middle column -->
+  <rect x="640" y="210" width="320" height="56" class="boxM"/>
+  <text x="800" y="246" text-anchor="middle" class="boxtext">lora_goal_receiver</text>
+
+  <rect x="640" y="278" width="320" height="56" class="boxM"/>
+  <text x="800" y="314" text-anchor="middle" class="boxtext">nav2_goal_bridge</text>
+
+  <rect x="620" y="350" width="360" height="170" class="boxNav"/>
+  <text x="800" y="392" text-anchor="middle" class="boxtext">Nav2 + SLAM Toolbox</text>
+  <text x="800" y="425" text-anchor="middle" class="label">Inputs: uav_goal, /scan, odom / fused pose</text>
+  <text x="800" y="452" text-anchor="middle" class="label">Output: /cmd_vel</text>
+
+  <rect x="640" y="545" width="320" height="56" class="boxM"/>
+  <text x="800" y="581" text-anchor="middle" class="boxtext">cmd_vel_gate</text>
+
+  <rect x="640" y="615" width="320" height="56" class="boxM"/>
+  <text x="800" y="651" text-anchor="middle" class="boxtext">chassis_serial_node</text>
+
+  <rect x="640" y="700" width="320" height="56" class="boxM"/>
+  <text x="800" y="736" text-anchor="middle" class="boxtext">uwb_serial_localizer</text>
+
+  <rect x="640" y="768" width="320" height="56" class="boxM"/>
+  <text x="800" y="804" text-anchor="middle" class="boxtext">pose_heading_fuser</text>
+
+  <!-- right column -->
+  <rect x="1160" y="210" width="320" height="70" class="boxR"/>
+  <text x="1320" y="250" text-anchor="middle" class="boxtext">Goal pose: uav_goal</text>
+  <text x="1320" y="272" text-anchor="middle" class="label">PoseStamped</text>
+
+  <rect x="1160" y="320" width="320" height="70" class="boxR"/>
+  <text x="1320" y="360" text-anchor="middle" class="boxtext">Fused pose / odom</text>
+  <text x="1320" y="382" text-anchor="middle" class="label">uwb_pose_fused, /odom</text>
+
+  <rect x="1160" y="430" width="320" height="70" class="boxR"/>
+  <text x="1320" y="470" text-anchor="middle" class="boxtext">Cmd: cmd_vel_gated</text>
+  <text x="1320" y="492" text-anchor="middle" class="label">Twist</text>
+
+  <rect x="1160" y="540" width="320" height="70" class="boxR"/>
+  <text x="1320" y="580" text-anchor="middle" class="boxtext">STM32</text>
+
+  <rect x="1160" y="650" width="320" height="70" class="boxR"/>
+  <text x="1320" y="690" text-anchor="middle" class="boxtext">Chassis actuation</text>
+
+  <!-- arrows -->
+  <path d="M440 245 C520 245, 560 238, 640 238" class="arrow"/>
+
+  <path d="M960 238 C1040 238, 1080 245, 1160 245" class="arrow"/>
+
+  <path d="M800 266 L800 278" class="arrow2"/>
+
+  <path d="M800 334 L800 350" class="arrow"/>
+
+  <!-- (cmd_vel_gate is enabled by uav_goal in code; omitted here for clarity) -->
+
+  <path d="M440 575 C520 575, 560 420, 620 410" class="arrow"/>
+  <text x="540" y="520" text-anchor="middle" class="label">/scan</text>
+
+  <path d="M800 520 L800 545" class="arrow"/>
+  <text x="845" y="538" class="label">/cmd_vel</text>
+
+  <path d="M960 573 C1040 573, 1080 470, 1160 470" class="arrow"/>
+  <text x="1065" y="520" text-anchor="middle" class="label">cmd_vel_gated</text>
+
+  <path d="M1160 470 C1060 470, 1040 645, 960 645" class="arrow"/>
+
+  <path d="M1480 470 L1480 540" class="arrow2"/>
+  <path d="M1320 610 L1320 650" class="arrow"/>
+
+  <path d="M440 355 C520 355, 560 728, 640 728" class="arrow"/>
+  <text x="545" y="410" text-anchor="middle" class="label">uwb_pose_raw</text>
+
+  <path d="M800 756 L800 768" class="arrow2"/>
+  <text x="855" y="764" class="label">+ chassis heading</text>
+
+  <path d="M960 796 C1040 796, 1080 360, 1160 360" class="arrow"/>
+  <text x="1070" y="410" text-anchor="middle" class="label">uwb_pose_fused (/odom)</text>
+
+  <path d="M440 465 C520 465, 560 796, 640 796" class="arrow2 dash"/>
+  <text x="545" y="520" text-anchor="middle" class="label">chassis/heading_rad</text>
+
+  <text x="800" y="878" text-anchor="middle" class="label muted">Key topics: uav_goal, /scan, /cmd_vel, cmd_vel_gated, uwb_pose_raw, uwb_pose_fused (/odom)</text>
+</svg>

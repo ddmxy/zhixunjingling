@@ -1,0 +1,8 @@
+# Fixed USB/serial layout on RDK — also copied to ~/device_ports.yaml on Desktop.
+# Edit ~/device_ports.yaml on the board when plug order changes.
+
+device_ports:
+  chassis: /dev/ttyUSB0
+  lidar: /dev/ttyACM0
+  arm_mcu: /dev/ttyACM1
+  arm_camera: /dev/video0

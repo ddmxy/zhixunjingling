@@ -1,0 +1,13 @@
+scp "C:\Users\惠普\Desktop\大二下\大创\RDK_Navigation\scripts\load_ports.py" sunrise@192.168.43.205:~/Desktop/
+scp "C:\Users\惠普\Desktop\大二下\大创\RDK_Navigation\scripts\load_ports.sh" sunrise@192.168.43.205:~/Desktop/
+scp "C:\Users\惠普\Desktop\大二下\大创\RDK_Navigation\scripts\run_navigation.sh" sunrise@192.168.43.205:~/Desktop/
+scp "C:\Users\惠普\Desktop\大二下\大创\RDK_Navigation\scripts\run_mapping.sh" sunrise@192.168.43.205:~/Desktop/
+scp "C:\Users\惠普\Desktop\大二下\大创\RDK_Navigation\scripts\run_full_mission.py" sunrise@192.168.43.205:~/Desktop/
+scp "C:\Users\惠普\Desktop\大二下\大创\RDK_Navigation\scripts\run_full_mission.sh" sunrise@192.168.43.205:~/Desktop/
+scp "C:\Users\惠普\Desktop\大二下\大创\RDK_Navigation\scripts\run_mission.py" sunrise@192.168.43.205:~/Desktop/
+scp "C:\Users\惠普\Desktop\大二下\大创\RDK_Navigation\scripts\grab_mission.py" sunrise@192.168.43.205:~/Desktop/
+scp "C:\Users\惠普\Desktop\大二下\大创\RDK_Navigation\scripts\check_usb_ports.sh" sunrise@192.168.43.205:~/Desktop/
+scp "C:\Users\惠普\Desktop\大二下\大创\RDK_Navigation\scripts\run_mission_phase1.sh" sunrise@192.168.43.205:~/Desktop/
+scp "C:\Users\惠普\Desktop\大二下\大创\RDK_Navigation\scripts\identify_ports.sh" sunrise@192.168.43.205:~/Desktop/
+scp "C:\Users\惠普\Desktop\大二下\大创\RDK_Navigation\config\device_ports.yaml" sunrise@192.168.43.205:~/device_ports.yaml
+scp "C:\Users\惠普\Desktop\大二下\大创\RDK_Navigation\config\mission_waypoints_v5.yaml" sunrise@192.168.43.205:~/mission_waypoints.yaml

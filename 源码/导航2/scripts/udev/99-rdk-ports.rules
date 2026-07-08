@@ -1,0 +1,25 @@
+# udev rules for stable device names on RDK X5.
+#
+# INSTALL (on RDK, once per board — edit KERNELS paths first!):
+#   1. Plug ONLY chassis STM32, run:  udevadm info -a -n /dev/ttyUSB0 | grep KERNELS
+#   2. Repeat for lidar on ACM0, arm on ACM1, camera on USB1.
+#   3. Replace the KERNELS= lines below with your physical USB port paths.
+#   4. sudo cp 99-rdk-ports.rules /etc/udev/rules.d/
+#   5. sudo udevadm control --reload-rules && sudo udevadm trigger
+#
+# After install, use symlinks in launch files:
+#   /dev/rdk_chassis  /dev/rdk_lidar  /dev/rdk_arm  /dev/rdk_arm_cam
+
+# --- TEMPLATE: uncomment and set KERNELS from udevadm on your board ---
+
+# SUBSYSTEM=="tty", KERNELS=="1-1.1:1.0", SYMLINK+="rdk_chassis"
+# SUBSYSTEM=="tty", KERNELS=="1-1.2:1.0", SYMLINK+="rdk_lidar"
+# SUBSYSTEM=="tty", KERNELS=="1-1.3:1.0", SYMLINK+="rdk_arm"
+# SUBSYSTEM=="tty", KERNELS=="1-1.4:1.0", SYMLINK+="rdk_arm_cam"
+
+# Fallback: if enumeration order is stable on your wiring, symlinks by tty name:
+# (less reliable if plug order changes)
+# SUBSYSTEM=="tty", KERNEL=="ttyUSB0", SYMLINK+="rdk_chassis"
+# SUBSYSTEM=="tty", KERNEL=="ttyACM0", SYMLINK+="rdk_lidar"
+# SUBSYSTEM=="tty", KERNEL=="ttyACM1", SYMLINK+="rdk_arm"
+# SUBSYSTEM=="tty", KERNEL=="ttyUSB1", SYMLINK+="rdk_arm_cam"

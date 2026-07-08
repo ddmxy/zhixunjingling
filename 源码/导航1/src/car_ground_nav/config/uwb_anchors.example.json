@@ -1,0 +1,11 @@
+{
+  "anchors": {
+    "0": [0.0, 0.0],
+    "1": [4.0, 0.0],
+    "2": [0.0, 3.0]
+  },
+  "fixed_triplet": [0, 1, 2],
+  "use_kalman": true,
+  "calib_a": 1.0,
+  "calib_b_mm": 0.0
+}

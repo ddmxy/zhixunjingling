@@ -1,0 +1,104 @@
+# Arena v5 — user confirmed points 2026-07-06
+# Ports: edit ~/device_ports.yaml (preferred) or mission grab_arm_port below
+frame_id: map
+map: /home/sunrise/maps/arena_map_v5.yaml
+device_ports_file: ~/device_ports.yaml
+
+points:
+  home:
+    x: 0.141
+    y: 0.078
+    yaw: 0.0314
+    yaw_deg: 1.8
+    frame_id: map
+    note: "estimate #03"
+
+  wp_09:
+    x: 0.640
+    y: -0.050
+    yaw: -0.4451
+    yaw_deg: -25.5
+    frame_id: map
+    note: "goal #04"
+
+  wp_10:
+    x: 0.839
+    y: -0.535
+    yaw: -1.4237
+    yaw_deg: -81.6
+    frame_id: map
+    note: "goal #05"
+
+  wp_11:
+    x: 0.825
+    y: -1.105
+    yaw: -1.9876
+    yaw_deg: -113.8
+    frame_id: map
+    note: "goal #06"
+
+  box_approach:
+    x: 0.440
+    y: -0.877
+    yaw: -1.5708
+    yaw_deg: -90.0
+    frame_id: map
+    note: "goal #07 箱子前"
+
+  wp_08:
+    x: -0.116
+    y: -0.022
+    yaw: 0.0122
+    yaw_deg: 0.7
+    frame_id: map
+    note: "goal #08 近原点备用（回家脱困后可经此点）"
+
+route:
+  - wp_09
+  - wp_10
+  - wp_11
+  - box_approach
+
+mission:
+  coarse_handoff_xy_m: 0.22
+  coarse_handoff_yaw_deg: 18.0
+  fine_at_via: true
+  fine_xy_m: 0.08
+  fine_yaw_deg: 6.0
+  fine_timeout_s: 25.0
+  fine_max_vx: 0.11
+  fine_max_wz: 0.45
+  fine_min_vx: 0.04
+  fine_min_wz: 0.16
+  final_coarse_handoff_xy_m: 0.12
+  final_xy_ok_m: 0.09
+  final_xy_severe_m: 0.09
+  final_yaw_deg: 1.5
+  final_rescue_vx: 0.06
+  final_yaw_timeout_s: 90.0
+  final_rescue_timeout_s: 20.0
+  home_arrive_xy_m: 0.30
+  home_nav_timeout_s: 180.0
+  settle_time_s: 0.3
+  final_dwell_s: 5.0
+  return_home: true
+  escape_before_home: true
+  escape_forward_m: 0.15
+  escape_vx: 0.08
+  escape_min_vx: 0.06
+  escape_rotate_deg: 90.0
+  escape_rotate_wz: 0.55
+  escape_rotate_sign: -1.0
+  escape_rotate_tol_deg: 8.0
+  escape_rotate_max_s: 12.0
+  escape_settle_s: 0.8
+  escape_max_s: 15.0
+  grab_enabled: true
+  grab_target_color: green
+  grab_pick_kill_max_s: 14.0
+  grab_pick_home_hold_s: 0.6
+  grab_pick_wait_s: 28.0
+  grab_settle_s: 6.0
+  grab_timeout_s: 180.0
+  final_point: box_approach
+  via_points: [wp_09, wp_10, wp_11]
